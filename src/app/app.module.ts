@@ -13,6 +13,9 @@ import { Items } from './view-child/viewchild.component';
 import { FriendComponent } from './component-example/child-friend.component';
 import { FriendListComponent } from './component-example/parent-friend.component';
 
+import { ChildFriendListComponent } from './component-example-tony/child-friend.component';
+import { ParentFriendComponent } from './component-example-tony/parent-friend.component';
+
 import { RxjsComponent } from './rxjs-component/rxjs-example';
 import { ScoreComponent } from './rxjs-component/rxjs-example-communication';
 import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
@@ -27,6 +30,8 @@ import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
     Items,
     FriendComponent,
     FriendListComponent,
+    ChildFriendListComponent,
+    ParentFriendComponent,
     RxjsComponent,
     ScoreComponent,
     RxjsLoginComponent
