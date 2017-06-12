@@ -1,7 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-    selector: 'friend-comp',
+    // tslint:disable-next-line:component-selector
+    selector: 'friend-component',
     template: `
         <div>FriendList<br><hr>
          <span *ngFor="let i of friends let ii = index">
@@ -18,12 +19,12 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
         }
     `],
 })
-export class FriendComp{
-    @Input() friends:string[]; //친구이름 목록
+export class FriendComponent {
+    @Input() friends: string[]; // 친구이름 목록
 
-    @Output() outputInfoAge = new EventEmitter<number>(); //친구의 Infonum
+    @Output() outputInfoAge = new EventEmitter<number>(); // 친구의 Infonum
 
-    showInfo(ageNum:number){
+    showInfo(ageNum: number) {
       this.outputInfoAge.emit(ageNum);
     }
  }

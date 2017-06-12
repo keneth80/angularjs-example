@@ -13,9 +13,14 @@ import { Items } from './view-child/viewchild.component';
 import { FriendComponent } from './component-example/child-friend.component';
 import { FriendListComponent } from './component-example/parent-friend.component';
 
-import { RxjsComponent } from './rxjs-component/rxjs-example';
+import { RxjsComponent } from './rxjs-component/rxjs-example-component';
 import { ScoreComponent } from './rxjs-component/rxjs-example-communication';
 import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
+
+import { ContentChildComponent } from './content-child-example/content-child.component';
+
+import { ChildFriendListComponent } from './component-example-tony/child-friend.component';
+import { ParentFriendComponent } from './component-example-tony/parent-friend.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,9 @@ import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
     FriendListComponent,
     RxjsComponent,
     ScoreComponent,
-    RxjsLoginComponent
+    RxjsLoginComponent,
+    ChildFriendListComponent,
+    ParentFriendComponent
   ],
   imports: [
     BrowserModule,
