@@ -10,8 +10,8 @@ import { FriendService } from './friend.service';
     selector: 'parent-friend',
     providers: [FriendService],
     template: `
-        <div>
-            <h2>Welcome {{name}}</h2>
+        <div class="list">
+            <h2>Component Example ( with Input, Output )</h2>
             <div class="flex-container">
                 <child-friend-list 
                     [friends]="friendLeftList" 
@@ -26,6 +26,12 @@ import { FriendService } from './friend.service';
         </div>
     `,
     styles: [`
+        .list {
+            background-color:#EFEFEF;
+            border:1px solid #DDD;
+            box-shadow:2px 2px 2px 0 rgba(0, 0, 0, 0.3);
+            border-radius:3px;
+        }
         .flex-container {
             display: -webkit-flex;
             display: flex;

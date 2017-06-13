@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 
 import { RepoService } from './rxjs-example.service';
@@ -8,16 +8,28 @@ import { RepoService } from './rxjs-example.service';
     selector: 'rx-component',
     providers: [RepoService],
     template: `
-        <button (click)="counter$.next(1111);communication_count$.next(22);">
-            Up Vote
-        </button>
-        <rxjs-component-score [score]="communication_count$ | async"></rxjs-component-score>
-        <ul>
-            <li *ngFor="let repo of repos | async">
-                {{repo.id}} : {{ repo.url }}
-            </li>
-        </ul>
-    `
+        <div class="list">
+            <h2>Rxjs service Example</h2>
+            <button (click)="counter$.next(1111);communication_count$.next(22);">
+                Up Vote
+            </button>
+            <rxjs-component-score [score]="communication_count$ | async"></rxjs-component-score>
+            <ul>
+                <li *ngFor="let repo of repos | async">
+                    {{repo.id}} : {{ repo.url }}
+                </li>
+            </ul>
+        </div>
+    `,
+    styles: [`
+        .list {
+            background-color:#EFEFEF;
+            border:1px solid #DDD;
+            box-shadow:2px 2px 2px 0 rgba(0, 0, 0, 0.3);
+            border-radius:3px;
+        }
+    `],
+    encapsulation: ViewEncapsulation.None
 })
 export class RxjsComponent {
     items = Observable.of([1, 2, 3]);

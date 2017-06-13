@@ -4,11 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ViewChildComponent } from './view-child/viewchild.component';
-import { Item } from './view-child/viewchild.component';
-import { ItemComponent } from './view-child/viewchild.component';
-import { Good } from './view-child/viewchild.component';
-import { Items } from './view-child/viewchild.component';
+
+import { ViewChildComponent, Good, Item, Items, ItemComponent } from './view-child/viewchild.component';
+import { ViewChildrenComponent, ChildComponent, ChildNameComponent } from './view-child/viewchildren.component';
 
 import { FriendComponent } from './component-example/child-friend.component';
 import { FriendListComponent } from './component-example/parent-friend.component';
@@ -36,7 +34,10 @@ import { ParentFriendComponent } from './component-example-tony/parent-friend.co
     ScoreComponent,
     RxjsLoginComponent,
     ChildFriendListComponent,
-    ParentFriendComponent
+    ParentFriendComponent,
+    ViewChildrenComponent,
+    ChildComponent,
+    ChildNameComponent
   ],
   imports: [
     BrowserModule,
