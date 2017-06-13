@@ -19,23 +19,23 @@ export class Items {
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'item-component',
-    template: '<button>알림창</button>'
+    template: '<button>alert</button>'
 })
 export class ItemComponent {
     display() {
-        alert('ItemComponent입니다1');
+        alert('is ItemComponent.');
     }
 }
 
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'goods',
-    template: '<button>Good알림창</button>'
+    template: '<button>Good alert</button>'
 })
 // tslint:disable-next-line:component-class-suffix
 export class Good {
     displays() {
-        alert('ItemComponent입니다1');
+        alert('is ItemComponent');
     }
 }
 
@@ -60,7 +60,7 @@ export class UserProfile {
                 <h2>ViewChild Example</h2>
                 <item status="false" *ngIf="isShow==false"></item>
                 <item status="true" *ngIf="isShow==true"></item>
-                <button (click)="toggle()">선택</button><br>
+                <button (click)="toggle()">select</button><br>
                 <items status1="true"></items>
                 isShow : {{isShow}}<br>
                 status : {{status}}<br>

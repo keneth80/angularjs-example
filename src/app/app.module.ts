@@ -15,7 +15,7 @@ import { RxjsComponent } from './rxjs-component/rxjs-example-component';
 import { ScoreComponent } from './rxjs-component/rxjs-example-communication';
 import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
 
-import { ContentChildComponent } from './content-child-example/content-child.component';
+import { ContentChildComponent, ButtonGroup, ChildButtonCompnent, GroupTitle } from './content-child-example/content-child.component';
 
 import { ChildFriendListComponent } from './component-example-tony/child-friend.component';
 import { ParentFriendComponent } from './component-example-tony/parent-friend.component';
@@ -37,7 +37,8 @@ import { ParentFriendComponent } from './component-example-tony/parent-friend.co
     ParentFriendComponent,
     ViewChildrenComponent,
     ChildComponent,
-    ChildNameComponent
+    ChildNameComponent,
+    ContentChildComponent, ButtonGroup, ChildButtonCompnent, GroupTitle
   ],
   imports: [
     BrowserModule,
