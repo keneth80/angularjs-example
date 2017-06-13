@@ -33,7 +33,7 @@ export class ChildNameComponent {
     selector: 'app-view-children',
     template: `
         <div class="list">
-            <h2>ViewChild Example</h2>
+            <h2>ViewChildren Example</h2>
             <view-children-child #child1 [childname]="'자식1'"></view-children-child>, {{child1.childname}}, {{child1.getName}}<br>
             <view-children-child #child2 [childname]="'자식2'"></view-children-child>, {{child2.childname}}, {{child2.getName}}<br>
             <view-children-child #child3 [childname]="'자식3'"></view-children-child>, {{child3.childname}}, {{child3.getName}}<br><br>
