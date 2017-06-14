@@ -35,7 +35,7 @@ import { Friend } from './model/friend.model';
       h2 {
         text-align: center;
       }
-  `],
+    `],
     encapsulation: ViewEncapsulation.None
 })
 // tslint:disable-next-line:max-line-length

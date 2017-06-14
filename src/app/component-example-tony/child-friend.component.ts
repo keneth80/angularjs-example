@@ -21,7 +21,7 @@ import { Friend } from './model/friend.model';
         <div class="list" *ngFor="let f of friends">
             <h3>Name: {{ f.name }}</h3>
             <h4>Age: {{ f.age }}</h4>
-            <button (click)="itemMove($event,f)">move</button>
+            <button (click)="itemMove($event,f)">이동</button>
         </div>
     `,
     styles: [`

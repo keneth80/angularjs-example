@@ -3,49 +3,36 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
-import { ViewChildComponent, Good, Item, Items, ItemComponent } from './view-child/viewchild.component';
-import { ViewChildrenComponent, ChildComponent, ChildNameComponent } from './view-child/viewchildren.component';
-
-import { FriendComponent } from './component-example/child-friend.component';
-import { FriendListComponent } from './component-example/parent-friend.component';
-
-import { RxjsComponent } from './rxjs-component/rxjs-example-component';
-import { ScoreComponent } from './rxjs-component/rxjs-example-communication';
-import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
-
-import { ContentChildComponent, ButtonGroup, ChildButtonCompnent, GroupTitle } from './content-child-example/content-child.component';
-
-import { ChildFriendListComponent } from './component-example-tony/child-friend.component';
-import { ParentFriendComponent } from './component-example-tony/parent-friend.component';
+/* 특징 모듈 */
+import { ViewChildModule } from './view-child/viewChaild.module';
+import { FriendModule } from './component-example/friend.module';
+import { RxjsModule } from './rxjs-component/rxjs.module';
+import { ContentChildModule } from './content-child-example/contentChild.module';
+import { ChildFriendModule } from './component-example-tony/childFriend.module';
+import { RoutingExModule } from './routing-example/routing-ex-module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewChildComponent,
-    Item,
-    ItemComponent,
-    Good,
-    Items,
-    FriendComponent,
-    FriendListComponent,
-    RxjsComponent,
-    ScoreComponent,
-    RxjsLoginComponent,
-    ChildFriendListComponent,
-    ParentFriendComponent,
-    ViewChildrenComponent,
-    ChildComponent,
-    ChildNameComponent,
-    ContentChildComponent, ButtonGroup, ChildButtonCompnent, GroupTitle
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    ViewChildModule,
+    FriendModule,
+    RxjsModule,
+    ContentChildModule,
+    ChildFriendModule,
+    RoutingExModule
   ],
+  exports: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
