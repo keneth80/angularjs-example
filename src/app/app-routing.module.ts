@@ -10,24 +10,23 @@ import { ParentFriendComponent } from './component-example-tony/parent-friend.co
 import { RxjsComponent } from './rxjs-component/rxjs-example-component';
 import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
 import { ContentChildComponent } from './content-child-example/content-child.component';
-//import { HeroDetailComponent }  from './hero-detail.component';
+// import { HeroDetailComponent }  from './hero-detail.component';
 
 const routes: Routes = [
-   { path: '', redirectTo: '/main', pathMatch: 'full' }
-  ,{ path: 'main',  component: AppComponent }
-  ,{ path: 'routingEx', component: RoutingEx }
-  ,{ path: 'ViewChild', component: ViewChildComponent }
-  ,{ path: 'viewchildren', component: ViewChildrenComponent }
-  ,{ path: 'FriendList', component: FriendListComponent }
-  ,{ path: 'ParentFriend', component: ParentFriendComponent }
-  ,{ path: 'RxjsComponent', component: RxjsComponent }
-  ,{ path: 'RxjsLoginComponent', component: RxjsLoginComponent }
-  ,{ path: 'ContentChildComponent', component: ContentChildComponent }
-  
+    { path: '', redirectTo: '/main', pathMatch: 'full' }
+    , { path: 'main',  component: AppComponent }
+    , { path: 'routingEx', component: RoutingEx }
+    , { path: 'ViewChild', component: ViewChildComponent }
+    , { path: 'viewchildren', component: ViewChildrenComponent }
+    , { path: 'FriendList', component: FriendListComponent }
+    , { path: 'ParentFriend', component: ParentFriendComponent }
+    , { path: 'RxjsComponent', component: RxjsComponent }
+    , { path: 'RxjsLoginComponent', component: RxjsLoginComponent }
+    , { path: 'ContentChildComponent', component: ContentChildComponent }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+    imports: [ RouterModule.forRoot(routes) ],
+    exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
