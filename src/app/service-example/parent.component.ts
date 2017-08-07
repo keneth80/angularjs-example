@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FriendListService } from './friend-list.service';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'parent-Comp',
     template: `
         <div>
@@ -20,18 +21,17 @@ import { FriendListService } from './friend-list.service';
         }
     `],
 })
-export class ParentComp {
-    friends:any; //친구의 이름
-    friendsAge = ['25','28','29','30','31']; //친구의 나이
+export class ParentComponent {
+    friends: any; // 친구의 이름
+    friendsAge = ['25', '28', '29', '30', '31']; // 친구의 나이
+    frName: string;
+    frAge: string;
 
     constructor(friendListService: FriendListService) {
-        this.friends = friendListService.friendsList(); //친구이름목록가져오기 서비스
+        this.friends = friendListService.friendsList(); // 친구이름목록가져오기 서비스
     }
 
-    frName:string;
-    frAge:string;
-    
-    infoNum(AgeNum:number){ //unm정보 받아보기
+    infoNum(AgeNum:number) { // unm정보 받아보기
         this.frAge = this.friendsAge[AgeNum];
         this.frName = this.friends[AgeNum];
     }

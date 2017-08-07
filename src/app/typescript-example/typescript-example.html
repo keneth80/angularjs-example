@@ -1,0 +1,86 @@
+<div>
+    <h1>{{title}}</h1>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="rowID">Example</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <h2>Array</h2>
+                    <button *ngIf="!setArray" (click)="setArrayEx()">Source Open</button>
+                </td>
+                <td>{{setArray}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Left Pad</h2>
+                    <button *ngIf="!setLeftPad" (click)="setLeftPadEx()">Source Open</button>
+                </td>
+                <td>{{setLeftPad}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Basic Type</h2>
+                    <button *ngIf="!setBasicType" (click)="setBasicTypeEx()">Source Open</button>
+                </td>
+                <td>{{setBasicType}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Classes</h2>
+                    <button *ngIf="!setClass" (click)="setClassEx()">Source Open</button>
+                </td>
+                <td>{{setClass}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Declarations Merging</h2>
+                    <button *ngIf="!setDeclarationsMerging" (click)="setDeclarationsMergingEx()">Source Open</button>
+                </td>
+                <td>{{setDeclarationsMerging}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Decorator</h2>
+                    <button *ngIf="!setDecorator" (click)="setDecoratorEx()">Source Open</button>
+                </td>
+                <td>{{setDecorator}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Enum</h2>
+                    <button *ngIf="!setEnum" (click)="setEnumEx()">Source Open</button>
+                </td>
+                <td>{{setEnum}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Function</h2>
+                    <button *ngIf="!setFunction" (click)="setFunctionEx()">Source Open</button>
+                </td>
+                <td>{{setFunction}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Destructuring</h2>
+                    <button *ngIf="!setDestructuring" (click)="setDestructuringEx()">Source Open</button>
+                </td>
+                <td>{{setDestructuring}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Object In Object</h2>
+                    <button *ngIf="!setObjectInObject" (click)="setObjectInObjectEx()">Source Open</button>
+                </td>
+                <td>{{setObjectInObject}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

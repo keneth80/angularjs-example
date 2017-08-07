@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Friend } from './model/promise.model';
 
 @Component({
-  selector: 'frlist-component',
+  // tslint:disable-next-line:component-selector
+  selector: 'friend-list-component',
   template: `
   <b>{{title}}</b>
   <div *ngFor="let o of list">
