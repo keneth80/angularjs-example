@@ -40,8 +40,11 @@ import { TypescriptComponent } from './typescript-example/typescript-example.com
     PipeModule,
     BookListModule
   ],
-  exports: [AppComponent,
-    TypescriptComponent],
+  exports: [
+    AppComponent,
+    TypescriptComponent
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
