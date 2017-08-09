@@ -7,21 +7,21 @@ import { ScoreComponent } from '../rxjs-component/rxjs-example-communication';
 import { RxjsLoginComponent } from '../rxjs-component/rxjs-example-form-login'
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
-    declarations: [
-        RxjsComponent,
-        ScoreComponent,
-        RxjsLoginComponent
-    ],
-    providers: [ ],
-    exports: [
-        RxjsComponent,
-        ScoreComponent,
-        RxjsLoginComponent
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule 
+  ],
+  declarations: [
+    RxjsComponent,
+    ScoreComponent,
+    RxjsLoginComponent
+  ],
+  providers: [ ],
+  exports:[
+    RxjsComponent,
+    ScoreComponent,
+    RxjsLoginComponent
+  ]
 })
 export class RxjsModule { }

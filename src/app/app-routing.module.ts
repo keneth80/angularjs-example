@@ -13,7 +13,9 @@ import { RxjsLoginComponent } from './rxjs-component/rxjs-example-form-login';
 import { ContentChildComponent } from './content-child-example/content-child.component';
 import { FileReadComponent } from './file-read-example/file-read.component';
 import { DynamicComponent } from './dynamic-component-example/dynamic-component.component';
-// import { HeroDetailComponent }  from './hero-detail.component';
+import { PipeComponent } from './pipe-example/pipe.component';
+import { BookListComponent } from './mongodb-example/book/book-list.component';
+import { TypescriptComponent } from './typescript-example/typescript-example.component';
 
 import { ConfigurationService } from './file-read-example/file-read.service';
 
@@ -30,6 +32,9 @@ const routes: Routes = [
     , { path: 'ContentChildComponent', component: ContentChildComponent }
     , { path: 'FileRead', component: FileReadComponent, canActivate: [ConfigurationService] }
     , { path: 'DynamicComponent', component: DynamicComponent }
+    , { path: 'PipeComponent', component: PipeComponent }
+    , { path: 'BookListComponent', component: BookListComponent }
+    , { path: 'TypescriptComponent', component: TypescriptComponent }
 ];
 
 @NgModule({
@@ -37,4 +42,5 @@ const routes: Routes = [
     exports: [ RouterModule ],
     providers: [ ConfigurationService, {provide: LocationStrategy, useClass: HashLocationStrategy} ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
+
