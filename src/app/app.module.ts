@@ -14,6 +14,9 @@ import { RxjsModule } from './rxjs-component/rxjs.module';
 import { ContentChildModule } from './content-child-example/contentChild.module';
 import { ChildFriendModule } from './component-example-tony/childFriend.module';
 import { RoutingExModule } from './routing-example/routing-ex-module';
+import { FileReadModule } from './file-read-example/file-read.module';
+import { DynamicComponentModule } from './dynamic-component-example/dynamic-component.module';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +33,11 @@ import { RoutingExModule } from './routing-example/routing-ex-module';
     RxjsModule,
     ContentChildModule,
     ChildFriendModule,
-    RoutingExModule
+    RoutingExModule,
+    FileReadModule,
+    DynamicComponentModule
   ],
   exports: [AppComponent],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
