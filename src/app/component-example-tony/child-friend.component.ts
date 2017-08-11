@@ -37,7 +37,7 @@ import { Friend } from './model/friend.model';
             text-align: center;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 // tslint:disable-next-line:max-line-length
 export class ChildFriendListComponent implements OnInit, OnDestroy, DoCheck, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {

@@ -27,7 +27,7 @@ import { ConfigurationService } from './file-read.service';
             border-radius:3px;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 export class FileReadComponent implements OnInit {
     fileuri = '/src/app/file-read-example/chart-column-group.json';

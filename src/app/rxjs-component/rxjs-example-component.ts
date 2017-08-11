@@ -29,7 +29,7 @@ import { RepoService } from './rxjs-example.service';
             border-radius:3px;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 export class RxjsComponent {
     items = Observable.of([1, 2, 3]);

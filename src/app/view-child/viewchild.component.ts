@@ -82,7 +82,7 @@ export class UserProfile {
             text-align: center;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 export class ViewChildComponent {
     isShow = true;

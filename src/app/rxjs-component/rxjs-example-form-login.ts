@@ -28,7 +28,7 @@ import { Observable, Subject } from 'rxjs/Rx';
             border-radius:3px;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 export class RxjsLoginComponent implements OnInit {
     loginForm: FormGroup;

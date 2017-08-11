@@ -24,13 +24,9 @@
 }
 
 .rowID {
-width: 15%;
+  width: 15%;
 }
 
 md-grid-tile {
   background: lightblue;
-}
-
-.mark { 
-    background-color: skyblue;
 }

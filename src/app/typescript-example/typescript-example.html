@@ -1,86 +1,65 @@
 <div>
-    <h1>{{title}}</h1>
-</div>
-
-<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="rowID">Example</th>
-                <th>Source</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <h2>Array</h2>
-                    <button *ngIf="!setArray" (click)="setArrayEx()">Source Open</button>
-                </td>
-                <td>{{setArray}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Left Pad</h2>
-                    <button *ngIf="!setLeftPad" (click)="setLeftPadEx()">Source Open</button>
-                </td>
-                <td>{{setLeftPad}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Basic Type</h2>
-                    <button *ngIf="!setBasicType" (click)="setBasicTypeEx()">Source Open</button>
-                </td>
-                <td>{{setBasicType}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Classes</h2>
-                    <button *ngIf="!setClass" (click)="setClassEx()">Source Open</button>
-                </td>
-                <td>{{setClass}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Declarations Merging</h2>
-                    <button *ngIf="!setDeclarationsMerging" (click)="setDeclarationsMergingEx()">Source Open</button>
-                </td>
-                <td>{{setDeclarationsMerging}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Decorator</h2>
-                    <button *ngIf="!setDecorator" (click)="setDecoratorEx()">Source Open</button>
-                </td>
-                <td>{{setDecorator}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Enum</h2>
-                    <button *ngIf="!setEnum" (click)="setEnumEx()">Source Open</button>
-                </td>
-                <td>{{setEnum}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Function</h2>
-                    <button *ngIf="!setFunction" (click)="setFunctionEx()">Source Open</button>
-                </td>
-                <td>{{setFunction}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Destructuring</h2>
-                    <button *ngIf="!setDestructuring" (click)="setDestructuringEx()">Source Open</button>
-                </td>
-                <td>{{setDestructuring}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Object In Object</h2>
-                    <button *ngIf="!setObjectInObject" (click)="setObjectInObjectEx()">Source Open</button>
-                </td>
-                <td>{{setObjectInObject}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h2 style="text-align: center;">Typescript Example</h2>
+    <pre style="text-align: left;">
+        <div class="array">
+            <h3><mark class="mark">Array 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setArrayEx}}
+        </div>
+        <div class="leftPad">
+            <h3><mark class="mark">Left Pad 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setLeftPadEx}}
+        </div>
+        <div class="basicType">
+            <h3><mark class="mark">Basic Type 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setBasicTypeEx}}
+        </div>
+        <div class="class">
+            <h3><mark class="mark">Class 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setClassEx}}
+        </div>
+        <div class="declarationsMerging">
+            <h3><mark class="mark">Declarations Merging 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setDeclarationsMergingEx}}
+        </div>
+        <div class="decorator">
+            <h3><mark class="mark">Decorator 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setDecoratorEx}}
+        </div>
+        <div class="enum">
+            <h3><mark class="mark">Enum 예제</mark></h3>
+            <h4>(1) Enum 개념</h4>
+            1. enumerate의 약어이다.
+            2. 열거형을 의미한다. 
+            3. 디폴트는 0으로 시작한다. 
+            4. UpperCamelCase 사용한다.
+            <h4>(2) 소스 코드</h4>
+        {{setEnumEx}}
+        </div>
+        <div class="function">
+            <h3><mark class="mark">Function 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setFunctionEx}}
+        </div>
+        <div class="destructuring">
+            <h3><mark class="mark">Destructuring 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setDestructuringEx}}
+        </div>
+        <div class="objectInObject">
+            <h3><mark class="mark">Object 오브젝트 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setObjectInObjectEx}}
+        </div>
+        <div class="arrayInObject">
+            <h3><mark class="mark">Array 오브젝트 예제</mark></h3>
+            <h4>소스 코드</h4>
+        {{setArrayObjectEx}}
+        </div>
+    </pre>
 </div>

@@ -1,17 +1,26 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
     selector: 'ts-ex',
     templateUrl: 'typescript-example.html',
     styleUrls: ['typescript-example.css']
 })
-export class TypescriptComponent {
+export class TypescriptComponent implements OnInit {
+    @ViewChild("array") array;
 
     title = 'Typescript Example';
+    result;
 
     constructor(private el: ElementRef) { }
 
-    setArrayEx(): void {
+    ngOnInit(): void { }
+
+    displayFunction(method: any): string {
+        let str = method.toString().replace(/\n/g, "<br />");
+        return str;
+    }
+
+    setArrayEx() : void {
 
         //일반배열선언
         let boom: string[] = ["b1", "b2", "b3"];
@@ -233,8 +242,8 @@ export class TypescriptComponent {
             return p;
         }
 
-        // let type = typecheck(1);
-        // console.log(typeof type);
+        let type = typecheck(1);
+        console.log(typeof type);
 
         //<--1
         class Mycar {
@@ -277,255 +286,6 @@ export class TypescriptComponent {
 
         let my1: MyCar1 = new MyCar1("haha", 5);
         console.log(my1.getCarName1() + " 자동차의 타이어 개수: " + my1.numTimer1);
-
-
-        // Class Expression : Class 표현식
-        let member = class {
-            getName() {
-                return "이름";
-            }
-        };
-
-        // Class Statement OR Declaration: Class 선언문
-        class Member {
-            name: string;
-            age: number;
-
-            constructor(age: number) {
-                this.age = age;
-            }
-
-            set setName(name: string) {
-                this.name = name;
-            }
-
-            get getName() {
-                return this.name;
-            }
-        };
-        // 클래스 메서드 호출 방법
-        let memberObj = new Member(10);
-        console.log(memberObj.getName);
-
-        // 클래스 외부에서 메소드 추가
-        // Member.prototype.getTitle = function () { };
-
-        /*
-            Consctuctor return
-        
-            constructor에서의 리턴 타입이 String 또는 Number이면
-            무시하고 인스턴스를 반환한다. 그외에 타입에 대해서는 constructor
-            리턴 값이 반환된다.
-         */
-        class constructor {
-            constructor() {
-                // return { name: "홍길동" };
-            }
-
-            getName() {
-                return "이름";
-            }
-        }
-
-        let constructorObj = new constructor();
-        // console.log(constructorObj.name); // 홍길동
-        console.log(constructorObj.getName); // undefined
-
-        // Class 상속
-        class Sports {
-            member: number;
-            ground: string;
-
-            constructor(member: number) {
-                this.member = member;
-            }
-
-            set setGround(ground: string) {
-                this.ground = ground;
-            }
-
-            get getMember() {
-                return this.member;
-            }
-        };
-
-        class Soccer extends Sports {
-
-            set setGround(ground: string) {
-                super.setGround;
-                this.ground = ground;
-            }
-        };
-
-        let soccer = new Soccer(11);
-        soccer.setGround = "상암구장";
-        console.log(soccer.getMember); // 11
-        console.log(soccer.ground); // 상암구장
-
-        // Builtin 오브젝트 상속
-        class ExtendArray extends Array {
-
-            constructor() {
-                super();
-            }
-
-            get getTotal() {
-                let total = 0;
-                for (var value of this) {
-                    total += value;
-                };
-                return total;
-            }
-        };
-
-        let extendArray = new ExtendArray();
-        extendArray.push(10, 20);
-        console.log(extendArray.getTotal);
-
-        // Object.setPrototypeOf()
-        let Game = {
-            getTitle() {
-                console.log("Game");
-            }
-        };
-
-        let Stacraft = {
-            getTitle() {
-                super.getTitle();
-                console.log("Starcraft");
-            }
-        }
-
-        Object.setPrototypeOf(Stacraft, Game);
-        Game.getTitle(); // Game, Starcraft
-
-        // Static method
-        class Book {
-            static get getTitle() {
-                return "해리포터";
-            }
-        };
-
-        console.log(Book.getTitle); // 해리포터
-
-        //Class Hoisting
-        try {
-            let result = Member;
-        } catch (e) {
-            console.log("호이스팅 불가"); // in
-        }
-
-        class HoistingTest {
-            static get getTest() {
-                return "test";
-            }
-        }
-
-        // Computed name
-        let type = "Type";
-
-        class Computed {
-            static ["get" + type](kind) {
-                return kind ? "스포츠" : "음악";
-            }
-        }
-
-        console.log(Computed["get" + type](1)); // 스포츠
-
-        // // This
-        // class Music {    
-        //     static set setSound(sound) {
-        //         this.sound = sound;
-        //     }
-
-        //     static get getSound() {
-        //         return this.sound;
-        //     }
-        // };
-        // Music.setSound = "크게";
-        // console.log(Music.getSound); // 크게
-
-        class Speaker {
-            constructor() {
-                // console.log(Speaker.getSound());
-                // console.log(this.constructor.getSound());
-            }
-
-            static get getSound() {
-                return "작게";
-            }
-        }
-
-        let SpeakerObj = new Speaker(); // 작게, 작게
-
-        // Generator
-        class Student {
-            *gen() {
-                yield 10;
-                yield 20;
-            }
-        };
-        let studentObj = new Student();
-        let genObj = studentObj.gen();
-
-        console.log(genObj.next()); // Object { value : 10, done: false } -> Generator object
-        console.log(genObj.next()); // object { value : 20, done: false }
-
-        // new.target
-        let target = function () {
-            console.log(new.target); // undefined, function() { ... }
-        };
-
-        target();
-        new target();
-
-        // new.target.name
-        class SuperTarget {
-            constructor() {
-                console.log("Super: ", new.target.name);
-            }
-        };
-
-        class SubTarget extends SuperTarget {
-            constructor() {
-                super();
-                console.log("Sub:", new.target.name);
-            }
-        };
-
-        let superObj = new SuperTarget(); // Super: SuperTarget, Super: SubTarget, Super: SubTarget
-        let subobj = new SubTarget();
-
-        // // Image object 상속
-        // // <script src="extends-image.js" defer></script>
-
-        // class ExtendsImage extends Image{
-        //     constructor() {
-        //         super();
-        //     }
-
-        //     set setProperty(image) {
-        //         this.src = image.src;
-        //         this.alt = image.alt;
-        //         this.title = image.title;
-        //     }
-        // };
-
-        // let imageObj = new ExtendsImage();
-        // let properties = {
-        //     src: "file/rainbow.png",
-        //     alt: "나무와 집이 있고 그 위에 무지개가 있는 모습",
-        //     title: "무지개"
-        // };
-
-        // imageObj.setProperty(properties);
-        // document.querySelector("body").appendChild(imageObj);
-
-        // /*
-        //   <img src = "file/rainbow.jpg"
-        //        alt = "나무와 집이 있고 그 위에 무지개가 있는 모습"
-        //        title = "무지개">
-        //  */
     }
 
     setDeclarationsMergingEx(): void {
@@ -587,6 +347,7 @@ export class TypescriptComponent {
 
     setEnumEx(): void {
 
+        //enumerate 의 약어. 열거형을 의미한다. 디폴트는 0으로 시작한다. UpperCamelCase사용
         enum Color {
             Red,
             Blue,
@@ -633,7 +394,6 @@ export class TypescriptComponent {
             return x + y;
         }
         console.log(add(3, 4));
-
         let myAdd: (baseValue: number, increment: number) => number =
             function (x, y) { return x + y; };
         console.log(myAdd(3, 4));
@@ -683,6 +443,10 @@ export class TypescriptComponent {
 
     setDestructuringEx(): void {
 
+        arrayDestructuring();
+        objectDestructuring();
+        parameterDestructuring();
+
         // Array Destructuring
         function arrayDestructuring() {
 
@@ -723,7 +487,6 @@ export class TypescriptComponent {
             console.log(nine, ten);
         }
 
-        // Parameter Destructuring
         function parameterDestructuring() {
             function total({ one, plus: { two, five } }) {
                 console.log(one + two + five);
@@ -735,7 +498,6 @@ export class TypescriptComponent {
 
     setObjectInObjectEx(): void {
 
-        // operation
         function operation() {
             // let sameKey = { one: 1, one: 2};
             // console.log(sameKey); // Object { one: 2}
@@ -753,32 +515,29 @@ export class TypescriptComponent {
 
         }
 
-        //getProperty
-        function getProperty() {
-            //ES5 get속성 = ES6 getter
-            var obj = {};
-            Object.defineProperty(obj, "book", {
-                get: function () {
-                    return "책";
-                }
-            });
-            // console.log(obj.book);
-        }
+        // function getProperty() {
+        //     //ES5 get속성 = ES6 getter
+        //     var obj = {};
+        //     Object.defineProperty(obj, "book", {
+        //         get: function () {
+        //             return "책";
+        //         }
+        //     });
+        //     console.log(obj.book);
+        // }
 
-        // setProperty
-        function setProperty() {
-            //ES5 set속성 = ES6 setter
-            var obj = {};
-            Object.defineProperty(obj, "item", {
-                set: function (param) {
-                    this.sports = param;
-                }
-            });
-            // obj.item = "야구";
-            // console.log(obj.sports);// defalut getter call
-        }
+        // function setProperty() {
+        //     //ES5 set속성 = ES6 setter
+        //     var obj = {};
+        //     Object.defineProperty(obj, "item", {
+        //         set: function (param) {
+        //             this.sports = param;
+        //         }
+        //     });
+        //     obj.item = "야구";
+        //     console.log(obj.sports);// defalut getter call
+        // }
 
-        // getter
         function getter() {
             //ES6 getter
             let obj = {
@@ -790,18 +549,16 @@ export class TypescriptComponent {
             console.log(obj.getValue);
         }
 
-        // setter
-        function setter() {
-            let obj = {
-                set setValue(value) {
-                    this.value = value;
-                }
-            };
-            obj.setValue = 123;
-            // console.log(obj.value);
-        }
+        // function setter() {
+        //     let obj = {
+        //         set setValue(value) {
+        //             this.value = value;
+        //         }
+        //     };
+        //     obj.setValue = 123;
+        //     console.log(obj.value);
+        // }
 
-        // is
         function isEx() {
 
             // Object.is() VS '==='
@@ -815,7 +572,6 @@ export class TypescriptComponent {
             console.log("8:", Object.is(undefined, null), undefined === null); // false false
         }
 
-        // assign
         function assignEx() {
 
             // Object.assign() Concept
@@ -844,31 +600,31 @@ export class TypescriptComponent {
             Object.assign(twoObj, { key1: undefined, key2: null });
             console.log(twoObj); // { key1: undefined, key2: null }
 
-            // Object.assign() necessity
-            let sports_1 = {
-                event: "축구",
-                palyer: 11
-            };
+            // //Object.assign() necessity
+            // let sports_1 = {
+            //     event: "축구",
+            //     palyer: 11
+            // };
 
-            let dup1 = sports_1;
+            // let dup1 = sports_1;
 
-            sports_1.palyer = 55;
+            // sports_1.palyer = 55;
             // console.log(dup1.player); // 55
 
-            dup1.event = "농구";
-            console.log(sports_1.event); // 농구
+            // dup1.event = "농구";
+            // console.log(sports_1.event); // 농구
 
-            //ES5 Object copy
-            let sports_2 = {
-                event: "축구",
-                palyer: 11
-            };
+            // //ES5 Object copy
+            // let sports_2 = {
+            //     event: "축구",
+            //     palyer: 11
+            // };
 
-            let dup_2 = {};
+            // let dup_2 = {};
 
-            for (var key in sports_2) {
-                dup_2[key] = sports_2[key];
-            }
+            // for (var key in sports_2) {
+            //     dup_2[key] = sports_2[key];
+            // }
 
             // sports_2.player = 33;
             // console.log(dup_2.player); // 11
@@ -973,7 +729,6 @@ export class TypescriptComponent {
             console.log(iterator.next());
         }
 
-        // find()
         function find() {
             let result = [1, 2, 3].find(function (value, index, allData) {
                 return value === 2;
@@ -987,7 +742,6 @@ export class TypescriptComponent {
             console.log(result); // 1
         }
 
-        // findIndex()
         function findIndex() {
             let result = [10, 20, 30].findIndex(function (value, index, allData) {
                 return value === 20;
@@ -1037,3 +791,252 @@ export class TypescriptComponent {
     }
 
 }
+
+
+// Class Expression : Class 표현식
+let member = class {
+    getName() {
+        return "이름";
+    }
+};
+
+// Class Statement OR Declaration: Class 선언문
+class Member {
+    name: string;
+    age: number;
+
+    constructor(age: number) {
+        this.age = age;
+    }
+
+    set setName(name: string) {
+        this.name = name;
+    }
+
+    get getName() {
+        return this.name;
+    }
+};
+// 클래스 메서드 호출 방법
+let memberObj = new Member(10);
+console.log(memberObj.getName);
+
+// 클래스 외부에서 메소드 추가
+// Member.prototype.getTitle = function () { };
+
+/*
+    Consctuctor return
+
+    constructor에서의 리턴 타입이 String 또는 Number이면
+    무시하고 인스턴스를 반환한다. 그외에 타입에 대해서는 constructor
+    리턴 값이 반환된다.
+ */
+class constructor {
+    constructor() {
+        // return { name: "홍길동" };
+    }
+
+    getName() {
+        return "이름";
+    }
+}
+
+let constructorObj = new constructor();
+// console.log(constructorObj.name); // 홍길동
+console.log(constructorObj.getName); // undefined
+
+// Class 상속
+class Sports {
+    member: number;
+    ground: string;
+
+    constructor(member: number) {
+        this.member = member;
+    }
+
+    set setGround(ground: string) {
+        this.ground = ground;
+    }
+
+    get getMember() {
+        return this.member;
+    }
+};
+
+class Soccer extends Sports {
+
+    set setGround(ground: string) {
+        super.setGround;
+        this.ground = ground;
+    }
+};
+
+let soccer = new Soccer(11);
+soccer.setGround = "상암구장";
+console.log(soccer.getMember); // 11
+console.log(soccer.ground); // 상암구장
+
+// Builtin 오브젝트 상속
+class ExtendArray extends Array {
+
+    constructor() {
+        super();
+    }
+
+    get getTotal() {
+        let total = 0;
+        for (var value of this) {
+            total += value;
+        };
+        return total;
+    }
+};
+
+let extendArray = new ExtendArray();
+extendArray.push(10, 20);
+console.log(extendArray.getTotal);
+
+// Object.setPrototypeOf()
+let Game = {
+    getTitle() {
+        console.log("Game");
+    }
+};
+
+let Stacraft = {
+    getTitle() {
+        super.getTitle();
+        console.log("Starcraft");
+    }
+}
+
+Object.setPrototypeOf(Stacraft, Game);
+Game.getTitle(); // Game, Starcraft
+
+// Static method
+class Book {
+    static get getTitle() {
+        return "해리포터";
+    }
+};
+
+console.log(Book.getTitle); // 해리포터
+
+//Class Hoisting
+try {
+    let result = Member;
+} catch (e) {
+    console.log("호이스팅 불가"); // in
+}
+
+class HoistingTest {
+    static get getTest() {
+        return "test";
+    }
+}
+
+// Computed name
+let type = "Type";
+
+class Computed {
+    static ["get" + type](kind) {
+        return kind ? "스포츠" : "음악";
+    }
+}
+
+console.log(Computed["get" + type](1)); // 스포츠
+
+// // This
+// class Music {    
+//     static set setSound(sound) {
+//         this.sound = sound;
+//     }
+
+//     static get getSound() {
+//         return this.sound;
+//     }
+// };
+// Music.setSound = "크게";
+// console.log(Music.getSound); // 크게
+
+class Speaker {
+    constructor() {
+        // console.log(Speaker.getSound());
+        // console.log(this.constructor.getSound());
+    }
+
+    static get getSound() {
+        return "작게";
+    }
+}
+
+let SpeakerObj = new Speaker(); // 작게, 작게
+
+// Generator
+class Student {
+    *gen() {
+        yield 10;
+        yield 20;
+    }
+};
+let studentObj = new Student();
+let genObj = studentObj.gen();
+
+console.log(genObj.next()); // Object { value : 10, done: false } -> Generator object
+console.log(genObj.next()); // object { value : 20, done: false }
+
+// new.target
+let target = function () {
+    console.log(new.target); // undefined, function() { ... }
+};
+
+target();
+new target();
+
+// new.target.name
+class SuperTarget {
+    constructor() {
+        console.log("Super: ", new.target.name);
+    }
+};
+
+class SubTarget extends SuperTarget {
+    constructor() {
+        super();
+        console.log("Sub:", new.target.name);
+    }
+};
+
+let superObj = new SuperTarget(); // Super: SuperTarget, Super: SubTarget, Super: SubTarget
+let subobj = new SubTarget();
+
+// // Image object 상속
+// // <script src="extends-image.js" defer></script>
+
+// class ExtendsImage extends Image{
+//     constructor() {
+//         super();
+//     }
+
+//     set setProperty(image) {
+//         this.src = image.src;
+//         this.alt = image.alt;
+//         this.title = image.title;
+//     }
+// };
+
+// let imageObj = new ExtendsImage();
+// let properties = {
+//     src: "file/rainbow.png",
+//     alt: "나무와 집이 있고 그 위에 무지개가 있는 모습",
+//     title: "무지개"
+// };
+
+// imageObj.setProperty(properties);
+// document.querySelector("body").appendChild(imageObj);
+
+// /*
+//   <img src = "file/rainbow.jpg"
+//        alt = "나무와 집이 있고 그 위에 무지개가 있는 모습"
+//        title = "무지개">
+//  */

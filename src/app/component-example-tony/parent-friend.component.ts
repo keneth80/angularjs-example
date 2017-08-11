@@ -48,7 +48,7 @@ import { FriendService } from './friend.service';
             margin: 0px 10px 10px 10px;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 export class ParentFriendComponent implements OnInit {
     name: string;

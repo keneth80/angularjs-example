@@ -53,7 +53,7 @@ export class ChildNameComponent {
             border-radius:3px;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
     })
 
     export class ViewChildrenComponent implements AfterViewInit {
