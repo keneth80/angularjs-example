@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { RoutingEx } from './routing-ex';
 
 @NgModule({
-    imports:[RouterModule.forChild([
+    imports: [RouterModule.forChild([
       { path: 'routing-ex', component: RoutingEx  }
   ])],
   exports: [RouterModule]

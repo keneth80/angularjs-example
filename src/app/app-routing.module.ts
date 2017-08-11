@@ -16,8 +16,15 @@ import { DynamicComponent } from './dynamic-component-example/dynamic-component.
 import { PipeComponent } from './pipe-example/pipe.component';
 import { BookListComponent } from './mongodb-example/book/book-list.component';
 import { TypescriptComponent } from './typescript-example/typescript-example.component';
+import { CdDemosAppComponent } from './change-detection-example/cd-demos.component';
+
+import {DefaultChangeDetectionComponent} from './change-detection-example/default-change-detection';
+import {ManualChangeDetectionComponent} from './change-detection-example/manual-change-detection';
+import {OnPushChangeDetectionComponent} from './change-detection-example/on-push-change-detection';
+import {OnPushChangeDetectionObservablesComponent} from './change-detection-example/on-push-change-detection-observables';
 
 import { ConfigurationService } from './file-read-example/file-read.service';
+
 
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' }
@@ -35,6 +42,29 @@ const routes: Routes = [
     , { path: 'PipeComponent', component: PipeComponent }
     , { path: 'BookListComponent', component: BookListComponent }
     , { path: 'TypescriptComponent', component: TypescriptComponent }
+    , { path: 'ChangeDetection', component: CdDemosAppComponent,
+        children: [
+            {
+                path: 'default-change-detection',
+                component: DefaultChangeDetectionComponent,
+                outlet: 'cd-routes'
+            },
+            {
+                path: 'on-push-change-detection',
+                component: OnPushChangeDetectionComponent,
+                outlet: 'cd-routes'
+            },
+            {
+                path: 'on-push-change-detection-observables',
+                component: OnPushChangeDetectionObservablesComponent,
+                outlet: 'cd-routes'
+            },
+            {
+                path: 'manual-change-detection',
+                component: ManualChangeDetectionComponent,
+                outlet: 'cd-routes'
+            }
+        ] }
 ];
 
 @NgModule({

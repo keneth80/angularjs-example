@@ -13,5 +13,7 @@
     <a routerLink="/PipeComponent" routerLinkActive="active"><button>Pipe</button></a>
     <a routerLink="/BookListComponent" routerLinkActive="active"><button>MongoDB Ex</button></a>
     <a routerLink="/TypescriptComponent" routerLinkActive="active"><button>Typescript Ex</button></a>
+    <a [routerLink]="['/ChangeDetection', {'outlets': {'cd-routes': ['default-change-detection']}}]" routerLinkActive="active"><button>ChangeDetection</button></a>
+    
     <router-outlet></router-outlet>
 </div>

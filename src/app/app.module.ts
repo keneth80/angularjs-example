@@ -20,6 +20,7 @@ import { DynamicComponentModule } from './dynamic-component-example/dynamic-comp
 import { PipeModule } from './pipe-example/pipe.module';
 import { BookListModule } from './mongodb-example/book.module';
 import { TypescriptComponent } from './typescript-example/typescript-example.component';
+import { CdDemosAppModule } from './change-detection-example/index';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { TypescriptComponent } from './typescript-example/typescript-example.com
         ChildFriendModule,
         RoutingExModule,
         FileReadModule,
-        DynamicComponentModule
+        DynamicComponentModule,
+        CdDemosAppModule
     ],
     exports: [
         AppComponent,
