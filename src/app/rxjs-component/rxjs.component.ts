@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 
-import { RepoService } from './rxjs-example.service';
+import { RepoService } from './rxjs.service';
 
 @Component({
     // tslint:disable-next-line:component-selector

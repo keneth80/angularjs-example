@@ -55,7 +55,6 @@ export class UserProfile {
 @Component({
     selector: 'app-view-child',
     template: `
-        <div>
             <div class="list">
                 <h2>ViewChild Example</h2>
                 <item status="false" *ngIf="isShow==false"></item>

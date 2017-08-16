@@ -4,12 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChildFriendListComponent } from '../component-example-tony/child-friend.component';
 import { ParentFriendComponent } from '../component-example-tony/parent-friend.component';
+import { ROUTER_CONFIG } from './component-ex-tony.routing';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ROUTER_CONFIG
   ],
   declarations: [
     ChildFriendListComponent,

@@ -13,11 +13,12 @@ export class Config {
     load() {
         // json files will be loaded here
         return new Promise((resolve, reject) => {
-        this.http.get('src/app/config/env.json')
-                    .map(res => res.json())
-                    .subscribe((env_data) => {
-                        this._env = env_data;
-                        this.http.get('src/app/config/' + env_data.env + '.json')
+            this.http.get('src/app/config/env.json')
+                .map(res => res.json())
+                .subscribe((env_data) => {
+                    console.log(env_data);
+                    this._env = env_data;
+                    this.http.get('src/app/config/' + env_data.env + '.json')
                         .map(res => res.json())
                         .catch((error: any) => {
                             console.error(error);
@@ -27,7 +28,7 @@ export class Config {
                             this._config = data;
                             resolve(true);
                         });
-                    });
+                });
         });
     }
 

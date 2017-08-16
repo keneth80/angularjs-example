@@ -19,13 +19,13 @@ import { Book } from './../model/book';
 
     <table class="table table-bordered">
         <thead>
-        <tr>
-            <td>Title</td>
-            <td>Book ID</td>
-            <td>Author</td>
-            <td>Published Date</td>
-            <td width="275" align="center">Action</td>
-        </tr>
+            <tr>
+                <td>Title</td>
+                <td>Book ID</td>
+                <td>Author</td>
+                <td>Published Date</td>
+                <td width="275" align="center">Action</td>
+            </tr>
         </thead>
         <tbody>
             <tr *ngFor="let book of books">
@@ -42,7 +42,6 @@ import { Book } from './../model/book';
         </tbody>
     </table>
 
- 
     <app-modal #modal></app-modal>
     <button class="btn btn-primary" (click)="modal.show()">Large modal</button>
 

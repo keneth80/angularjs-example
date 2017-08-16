@@ -13,5 +13,5 @@ import { Component } from '@angular/core';
         margin-top:2%
     `],
 })
-export class RoutingEx {    
+export class RoutingExComponent {    
 }

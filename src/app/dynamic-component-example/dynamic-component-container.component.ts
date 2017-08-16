@@ -1,6 +1,6 @@
 import {Component, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver} from '@angular/core';
-import HelloWorldComponent from './hello-world-component';
-import WorldHelloComponent from './world-hello-component';
+import HelloWorldComponent from './hello-world.component';
+import WorldHelloComponent from './world-hello.component';
 
 @Component({
     // tslint:disable-next-line:component-selector

@@ -1,7 +1,6 @@
 import { Component, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import HelloWorldComponent from './hello-world-component';
-import WorldHelloComponent from './world-hello-component';
+import HelloWorldComponent from './hello-world.component';
+import WorldHelloComponent from './world-hello.component';
 import DynamicComponentContainer from './dynamic-component-container.component';
 
 @Component({

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
 
-import { Repo } from './model/rxjs-example.model';
+import { Repo } from './model/rxjs.model';
 
 @Injectable()
 export class RepoService {

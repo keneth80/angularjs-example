@@ -6,7 +6,7 @@ import { ConfigurationService } from './file-read.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: 'rx-component',
+    selector: 'file-read-component',
     providers: [ConfigurationService],
     template: `
         <div class="list">
@@ -42,6 +42,7 @@ export class FileReadComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('file read');
         this.configurationService.getConfiguration(this.fileuri)
             .subscribe(
                 (res) => {

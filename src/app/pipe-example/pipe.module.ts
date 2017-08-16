@@ -7,12 +7,14 @@ import { PipeComponent } from './pipe.component';
 import { BuiltInPipeComponent, DateFormatsComponent, UpperLowerComponent, AsyncComponent, JsonComponent } from './built-in-pipe/built-in-pipe.component';
 import { CustomPipeUseComponent, FilterComponent } from './custom-pipe/custom-pipe-use.component';
 import { FilterPipe } from './custom-pipe/custom-pipe.component';
+import { ROUTER_CONFIG } from './pipe.routing';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        ROUTER_CONFIG
     ],
     declarations: [
         PipeComponent,
