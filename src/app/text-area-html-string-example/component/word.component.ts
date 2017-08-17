@@ -1,7 +1,7 @@
 import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'app-text-area-component',
+    selector: 'app-word-component',
     template: `
                 <div class="word" 
                      contenteditable="true" 
@@ -28,7 +28,7 @@ export class WordComponent {
     private _word: string;
 
     constructor() {
-
+        this.htmlstring = 'This select box!';
     }
 
     setDMLWord(text: string): string {

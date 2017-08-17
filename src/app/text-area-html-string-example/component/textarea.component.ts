@@ -3,13 +3,16 @@ import { Component, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsula
 @Component({
     selector: 'app-text-area-component',
     template: `
-                <div class="editor" 
-                     contenteditable="true" 
-                     [innerHTML]="htmlstring"
-                     (click)="onClick($event);"
-                     (focus)="onFocus($event);"
-                     (blur)="onblur($event);"
-                     (keyup)="onKeyup($event);"></div>
+                <div>
+                    <div class="editor" 
+                        contenteditable="true" 
+                        [innerHTML]="htmlstring"
+                        (click)="onClick($event);"
+                        (focus)="onFocus($event);"
+                        (blur)="onblur($event);"
+                        (keyup)="onKeyup($event);"></div>
+                    <app-word-component >select box</app-word-component>
+                </div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
     encapsulation: ViewEncapsulation.Native,
@@ -24,6 +27,9 @@ export class TextAreaComponent {
     columnTagCss = 'column';
     spacer = '&nbsp;&nbsp;';
     isFocusing = false;
+    isSelectbox = '';
+    boxX = 0;
+    boxY = 0;
 
     private _items: Array<any>;
 
@@ -43,6 +49,8 @@ export class TextAreaComponent {
 
     onClick(event: any) {
         console.log('onClick : ', event.clientX, event.clientY);
+        this.boxX = event.clientX;
+        this.boxY = event.clientY;
     }
 
     onFocus(event: any) {

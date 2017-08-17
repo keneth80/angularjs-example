@@ -15,19 +15,19 @@
 }
 
 :host .editor .dml {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     color: lightskyblue;
 }
 
 :host .editor .where {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     color: lightslategray;
 }
 
 :host .editor .column {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: normal;
     color: gray;
 }
