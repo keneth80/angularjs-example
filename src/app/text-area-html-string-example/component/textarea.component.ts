@@ -1,31 +1,33 @@
-import { Component, ViewChild, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+
+import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterContentInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'app-text-area-component',
     template: `
-                <div>
-                    <div #filed class="editor" 
+                <div class="btn-group">
+                    <div #textarea class="editor" 
                         contenteditable="true" 
                         (click)="onClick($event);"
                         (focus)="onFocus($event);"
                         (blur)="onblur($event);"
                         (keyup)="onKeyup($event);"></div>
                         
-                        <app-word-component 
+                        <app-word-list-component 
                             [items]="_items" 
                             [boxPosition]="boxPosition" 
-                            [isFocusing]="isFocusing"></app-word-component>
+                            [isFocusing]="isFocusing"></app-word-list-component>
                 </div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
     encapsulation: ViewEncapsulation.Native,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextAreaComponent {
-    @ViewChild('filed') filed;
+export class TextAreaComponent implements AfterContentInit {
 
     @Output() keyChange = new EventEmitter();
     @Output() keyComplete = new EventEmitter();
+
+    @ViewChild('textarea') textareaEl: ElementRef;
 
     htmlstring: string;
     columnTagCss: string = 'column';
@@ -44,7 +46,7 @@ export class TextAreaComponent {
         { id: '4', label: 'label4' },
     ];
 
-    constructor() {
+    constructor(private elementRef: ElementRef) {
         // test code
         this.htmlstring = `<span class="dml">SELECT</span>${this.spacer}<span class="column">column1,${this.spacer}column2</span>`
             + `</br>`
@@ -54,29 +56,32 @@ export class TextAreaComponent {
             + `<span class="where">WHERE</span>${this.spacer}<span class="column">column1</span>${this.spacer}=${this.spacer}123`;
     }
 
+    ngAfterContentInit() {
+        console.log('ngAfterContentInit');
+    }
+
     setDMLWord(text: string): string {
         return `<span class="dml">${text}</span>`;
     }
 
     onClick(event: any) {
-        if (!this.filed.nativeElement.innerHTML) {
+        if (!this.textareaEl.nativeElement.innerHTML) {
             this.isFocusing = true;
         }
-        console.log('#filed', this.filed);
-        // this.isFocusing = true;
+        console.log('#filed', this.textareaEl);
         console.log('onClick : ', event.clientX, event.clientY);
 
         this.boxPosition = {
             boxX: event.clientX,
             boxY: event.clientY
         };
+
     }
 
     onFocus(event: any) {
-        // this.isFocusing = true;
         const left: number = event.view.screenLeft;
         const top: number = event.view.screenTop;
-        console.log('onFocus : ', left, top);
+        console.log('onFocus : ', left, top, event);
     }
 
     onblur(event: any) {
@@ -85,18 +90,20 @@ export class TextAreaComponent {
     }
 
     onKeyup(event: any) {
-        if (this.filed.nativeElement.innerHTML) {
+        if (this.textareaEl.nativeElement.innerHTML) {
             this.isFocusing = false;
         } else {
             this.isFocusing = true;
         }
 
-        if(event.keyCode === 32) { // space
+        if (event.keyCode === 32) { // space
             this.isFocusing = true;
         } else {
             this.isFocusing = false;
         }
 
         console.log('onKeyup : ', event);
+        console.log('el : ', this.textareaEl.nativeElement);
     }
+
 }

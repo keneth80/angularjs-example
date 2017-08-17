@@ -31,3 +31,14 @@
     font-weight: normal;
     color: gray;
 }
+
+:host .word {
+    max-width: 100px;
+    border: 1px solid chocolate;
+}
+
+:host .word .word-list {
+    background-color: #fff;
+}
+
+li {list-style-type: none;}

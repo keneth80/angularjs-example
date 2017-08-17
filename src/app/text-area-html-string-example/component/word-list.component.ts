@@ -1,16 +1,16 @@
-import { Component, OnInit, OnChanges, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'app-word-component',
+    selector: 'app-word-list-component',
     template: `
-                <ul class="word-list" 
-                 *ngIf="isFocusing"
+                <ul class="word-list"
+                     *ngIf="isFocusing"
                      (keyup)="keyUp($event)"
                      contenteditable="true" 
                      [ngStyle]="setStyles()">
 
                     <li *ngFor="let item of items">
-                        <a class="dropdown-item">
+                        <a class="dropdown-item" (click)="select(item);">
                             <span>{{item.label}}</span>
                         </a>
                     </li>
@@ -19,7 +19,7 @@ import { Component, OnInit, OnChanges, Input, Output, ViewEncapsulation } from '
     styleUrls: ['../text-area-html-string-example.css'],
     encapsulation: ViewEncapsulation.Native
 })
-export class WordComponent implements OnChanges {
+export class WordListComponent {
     @Input() boxPosition: any;
     @Input() isFocusing: boolean;
     @Input()
@@ -40,6 +40,8 @@ export class WordComponent implements OnChanges {
         return this._word;
     }
 
+    @Output() wordSelect = new EventEmitter();
+
     htmlstring: string;
     columnTagCss = 'column';
 
@@ -54,8 +56,8 @@ export class WordComponent implements OnChanges {
         console.log('ngOnChanges', this.isFocusing);
     }
 
-    setDMLWord(text: string): string {
-        return `<span class="dml">${text}</span>`;
+    select(word: any) {
+        this.wordSelect.emit(word);
     }
 
     setStyles() {
@@ -73,4 +75,5 @@ export class WordComponent implements OnChanges {
     keyUp(event) {
         console.log('keyUp', event);
     }
+
 }
