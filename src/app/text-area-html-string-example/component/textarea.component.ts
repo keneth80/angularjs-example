@@ -1,3 +1,4 @@
+
 import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterContentInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -6,12 +7,15 @@ import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterContentIni
                 <div class="btn-group">
                     <div #textarea class="editor" 
                         contenteditable="true" 
-                        [innerHTML]="htmlstring"
                         (click)="onClick($event);"
                         (focus)="onFocus($event);"
                         (blur)="onblur($event);"
                         (keyup)="onKeyup($event);"></div>
-                    <app-word-list-component [items]="_items"></app-word-list-component>
+                        
+                        <app-word-list-component 
+                            [items]="_items" 
+                            [boxPosition]="boxPosition" 
+                            [isFocusing]="isFocusing"></app-word-list-component>
                 </div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
@@ -30,24 +34,26 @@ export class TextAreaComponent implements AfterContentInit {
     spacer = '&nbsp;';
     isFocusing = false;
     isSelectbox = '';
-    boxX = 0;
-    boxY = 0;
+    boxPosition = {
+        boxX: 0,
+        boxY: 0
+    };
 
     _items: Array<any> = [
-        {id: '1', label: 'label1'},
-        {id: '2', label: 'label2'},
-        {id: '3', label: 'label3'},
-        {id: '4', label: 'label4'},
+        { id: '1', label: 'label1' },
+        { id: '2', label: 'label2' },
+        { id: '3', label: 'label3' },
+        { id: '4', label: 'label4' },
     ];
 
     constructor(private elementRef: ElementRef) {
         // test code
         this.htmlstring = `<span class="dml">SELECT</span>${this.spacer}<span class="column">column1,${this.spacer}column2</span>`
-                        + `</br>`
-                        + `<span class="dml">FROM</span>${this.spacer}<span class="column">table1</span>`
-                        + `</br>`
-                        // tslint:disable-next-line:max-line-length
-                        + `<span class="where">WHERE</span>${this.spacer}<span class="column">column1</span>${this.spacer}=${this.spacer}123`;
+            + `</br>`
+            + `<span class="dml">FROM</span>${this.spacer}<span class="column">table1</span>`
+            + `</br>`
+            // tslint:disable-next-line:max-line-length
+            + `<span class="where">WHERE</span>${this.spacer}<span class="column">column1</span>${this.spacer}=${this.spacer}123`;
     }
 
     ngAfterContentInit() {
@@ -59,13 +65,20 @@ export class TextAreaComponent implements AfterContentInit {
     }
 
     onClick(event: any) {
-        console.log('onClick : ', event, event.clientX, event.clientY);
-        this.boxX = event.clientX;
-        this.boxY = event.clientY;
+        if (!this.textareaEl.nativeElement.innerHTML) {
+            this.isFocusing = true;
+        }
+        console.log('#filed', this.textareaEl);
+        console.log('onClick : ', event.clientX, event.clientY);
+
+        this.boxPosition = {
+            boxX: event.clientX,
+            boxY: event.clientY
+        };
+
     }
 
     onFocus(event: any) {
-        this.isFocusing = true;
         const left: number = event.view.screenLeft;
         const top: number = event.view.screenTop;
         console.log('onFocus : ', left, top, event);
@@ -77,6 +90,18 @@ export class TextAreaComponent implements AfterContentInit {
     }
 
     onKeyup(event: any) {
+        if (this.textareaEl.nativeElement.innerHTML) {
+            this.isFocusing = false;
+        } else {
+            this.isFocusing = true;
+        }
+
+        if (event.keyCode === 32) { // space
+            this.isFocusing = true;
+        } else {
+            this.isFocusing = false;
+        }
+
         console.log('onKeyup : ', event);
         console.log('el : ', this.textareaEl.nativeElement);
     }
