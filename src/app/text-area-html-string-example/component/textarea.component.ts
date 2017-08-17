@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsula
 @Component({
     selector: 'app-text-area-component',
     template: `
-                <div>
+                <div class="btn-group">
                     <div class="editor" 
                         contenteditable="true" 
                         [innerHTML]="htmlstring"
@@ -11,7 +11,7 @@ import { Component, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsula
                         (focus)="onFocus($event);"
                         (blur)="onblur($event);"
                         (keyup)="onKeyup($event);"></div>
-                    <app-word-component >select box</app-word-component>
+                    <app-word-component [items]="_items"></app-word-component>
                 </div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
@@ -31,7 +31,12 @@ export class TextAreaComponent {
     boxX = 0;
     boxY = 0;
 
-    private _items: Array<any>;
+    _items: Array<any> = [
+        {id: '1', label: 'label1'},
+        {id: '2', label: 'label2'},
+        {id: '3', label: 'label3'},
+        {id: '4', label: 'label4'},
+    ];
 
     constructor() {
         // test code
