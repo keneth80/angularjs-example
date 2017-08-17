@@ -27,7 +27,7 @@ export class TextAreaComponent implements AfterContentInit {
 
     htmlstring: string;
     columnTagCss = 'column';
-    spacer = '&nbsp;&nbsp;';
+    spacer = '&nbsp;';
     isFocusing = false;
     isSelectbox = '';
     boxX = 0;
