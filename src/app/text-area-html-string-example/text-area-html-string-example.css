@@ -40,3 +40,5 @@
 :host .word .word-list {
     background-color: #fff;
 }
+
+li {list-style-type: none;}

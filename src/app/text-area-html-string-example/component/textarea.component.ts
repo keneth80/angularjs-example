@@ -1,27 +1,29 @@
-import { Component, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterContentInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'app-text-area-component',
     template: `
                 <div class="btn-group">
-                    <div class="editor" 
+                    <div #textarea class="editor" 
                         contenteditable="true" 
                         [innerHTML]="htmlstring"
                         (click)="onClick($event);"
                         (focus)="onFocus($event);"
                         (blur)="onblur($event);"
                         (keyup)="onKeyup($event);"></div>
-                    <app-word-component [items]="_items"></app-word-component>
+                    <app-word-list-component [items]="_items"></app-word-list-component>
                 </div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
     encapsulation: ViewEncapsulation.Native,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextAreaComponent {
+export class TextAreaComponent implements AfterContentInit {
 
     @Output() keyChange = new EventEmitter();
     @Output() keyComplete = new EventEmitter();
+
+    @ViewChild('textarea') textareaEl: ElementRef;
 
     htmlstring: string;
     columnTagCss = 'column';
@@ -38,7 +40,7 @@ export class TextAreaComponent {
         {id: '4', label: 'label4'},
     ];
 
-    constructor() {
+    constructor(private elementRef: ElementRef) {
         // test code
         this.htmlstring = `<span class="dml">SELECT</span>${this.spacer}<span class="column">column1,${this.spacer}column2</span>`
                         + `</br>`
@@ -48,12 +50,16 @@ export class TextAreaComponent {
                         + `<span class="where">WHERE</span>${this.spacer}<span class="column">column1</span>${this.spacer}=${this.spacer}123`;
     }
 
+    ngAfterContentInit() {
+        console.log('ngAfterContentInit');
+    }
+
     setDMLWord(text: string): string {
         return `<span class="dml">${text}</span>`;
     }
 
     onClick(event: any) {
-        console.log('onClick : ', event.clientX, event.clientY);
+        console.log('onClick : ', event, event.clientX, event.clientY);
         this.boxX = event.clientX;
         this.boxY = event.clientY;
     }
@@ -62,7 +68,7 @@ export class TextAreaComponent {
         this.isFocusing = true;
         const left: number = event.view.screenLeft;
         const top: number = event.view.screenTop;
-        console.log('onFocus : ', left, top);
+        console.log('onFocus : ', left, top, event);
     }
 
     onblur(event: any) {
@@ -72,5 +78,7 @@ export class TextAreaComponent {
 
     onKeyup(event: any) {
         console.log('onKeyup : ', event);
+        console.log('el : ', this.textareaEl.nativeElement);
     }
+
 }
