@@ -25,6 +25,9 @@ import { OnPushChangeDetectionObservablesComponent } from './change-detection-ex
 
 import { ConfigurationService } from './file-read-example/file-read.service';
 
+import { TextAreaHtmlStringExampleComponent } from './text-area-html-string-example/text-area-html-string-example.component';
+
+
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' }
     , { path: 'main', component: RoutingExComponent }
@@ -39,8 +42,10 @@ const routes: Routes = [
     , { path: '', loadChildren: 'app/pipe-example/pipe.module#PipeModule' }
     , { path: '', loadChildren: 'app/typescript-example/typescript.module#TypescriptModule' }
     , { path: 'BookListComponent', component: BookListComponent }
-    , {
-        path: 'ChangeDetection', component: CdDemosAppComponent,
+    , { path: 'ChangeDetection', component: CdDemosAppComponent }
+    , { path: 'TypescriptComponent', component: TypescriptComponent }
+    , { path: 'TextAreaComponent' , component: TextAreaHtmlStringExampleComponent }
+    , { path: 'ChangeDetection', component: CdDemosAppComponent,
         children: [
             {
                 path: 'default-change-detection',

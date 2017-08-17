@@ -21,6 +21,8 @@ import { PipeModule } from './pipe-example/pipe.module';
 import { BookListModule } from './mongodb-example/book.module';
 import { TypescriptModule } from './typescript-example/typescript.module';
 import { CdDemosAppModule } from './change-detection-example/index';
+import { TextAreaHtmlStringModule } from './text-area-html-string-example/text-area-html-string-example.module';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -42,10 +44,13 @@ import { CdDemosAppModule } from './change-detection-example/index';
         FileReadModule,
         DynamicComponentModule,
         CdDemosAppModule,
+        TextAreaHtmlStringModule
+    ],
+    exports: [
+        AppComponent,
         PipeModule,
         BookListModule,
         TypescriptModule
-        
     ],
     providers: [],
     bootstrap: [
