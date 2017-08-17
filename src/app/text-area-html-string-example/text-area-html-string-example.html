@@ -1,10 +1,6 @@
 <div class="text-area-body">
     <h2>TextArea - Html format display</h2>
-    <div class="editor" 
-         contenteditable="true" 
-         [innerHTML]="htmlstring"
-         (click)="onClick($event);"
-         (focus)="onFocus($event);"
-         (blur)="onblur($event);"
-         (keyup)="onKeyup($event);"></div>
+    <app-text-area-component (keyChange)="onKeyChange($event)"
+                             (keyComplete)="onKeyComplete($event)">
+    </app-text-area-component>
 </div>

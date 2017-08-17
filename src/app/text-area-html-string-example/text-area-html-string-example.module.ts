@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TextAreaHtmlStringExampleComponent } from '../text-area-html-string-example/text-area-html-string-example.component';
+import { TextAreaComponent } from './component/textarea.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { TextAreaHtmlStringExampleComponent } from '../text-area-html-string-exa
     ReactiveFormsModule
   ],
   declarations: [
-    TextAreaHtmlStringExampleComponent
+    TextAreaHtmlStringExampleComponent,
+    TextAreaComponent
   ],
   providers: [ ],
   exports: [
