@@ -1,0 +1,33 @@
+:host .text-area-body {
+    display: inline;
+}
+
+:host .editor {
+    white-space: pre-wrap;
+    border: 1px solid coral;
+    min-width: 200px;
+    width: calc( 100% - 40px );
+    height: 100px;
+    min-height: 20px;
+    text-align: left;
+    position: absolute;
+    left: 20px;
+}
+
+:host .editor .dml {
+    font-size: 15px;
+    font-weight: bold;
+    color: lightskyblue;
+}
+
+:host .editor .where {
+    font-size: 15px;
+    font-weight: bold;
+    color: lightslategray;
+}
+
+:host .editor .column {
+    font-size: 13px;
+    font-weight: normal;
+    color: gray;
+}

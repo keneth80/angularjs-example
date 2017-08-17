@@ -25,6 +25,8 @@ import {OnPushChangeDetectionObservablesComponent} from './change-detection-exam
 
 import { ConfigurationService } from './file-read-example/file-read.service';
 
+import { TextAreaHtmlStringExampleComponent } from './text-area-html-string-example/text-area-html-string-example.component';
+
 
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' }
@@ -42,6 +44,7 @@ const routes: Routes = [
     , { path: 'PipeComponent', component: PipeComponent }
     , { path: 'BookListComponent', component: BookListComponent }
     , { path: 'TypescriptComponent', component: TypescriptComponent }
+    , { path: 'TextAreaComponent' , component: TextAreaHtmlStringExampleComponent }
     , { path: 'ChangeDetection', component: CdDemosAppComponent,
         children: [
             {
