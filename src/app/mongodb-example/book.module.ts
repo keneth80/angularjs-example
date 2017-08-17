@@ -22,7 +22,7 @@ import { BookService } from './book.service';
         FormsModule,
         ReactiveFormsModule,
         BookRoutingModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
     ],
     declarations: [
         BookListComponent,

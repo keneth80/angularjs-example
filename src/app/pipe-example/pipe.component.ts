@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { BuiltInPipeComponent } from './built-in-pipe/built-in-pipe.component';
 import { CustomPipeUseComponent } from './custom-pipe/custom-pipe-use.component';

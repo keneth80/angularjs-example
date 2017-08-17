@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 
-import { RepoService } from './rxjs-example.service';
+import { RepoService } from './rxjs.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -29,7 +29,7 @@ import { RepoService } from './rxjs-example.service';
             border-radius:3px;
         }
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Native
 })
 export class RxjsComponent {
     items = Observable.of([1, 2, 3]);
