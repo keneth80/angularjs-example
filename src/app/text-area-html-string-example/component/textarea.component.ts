@@ -49,6 +49,10 @@ export class TextAreaComponent implements AfterContentInit {
         this.textareaEl.nativeElement.innerHTML += value + this.spacer;
     }
 
+    getText(): string {
+        return this.textareaEl.nativeElement.innerHTML;
+    }
+
     ngAfterContentInit() {
         console.log('ngAfterContentInit');
     }

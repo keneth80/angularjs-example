@@ -58,9 +58,13 @@ export class TextAreaHtmlStringExampleComponent {
     _dmls: string[];
     _columns: string[];
 
+    private originText: string; // 순수 sql string
+    private currentText: string; // focus start 후 입력되는 text
+
     constructor(private textareaService: TextAreaHtmlStringExampleService) {
         this.textareaService.getDML().subscribe((res: any) => { this._dmls = res; });
         this.textareaService.getColumns('test_table1').subscribe((res: any) => { this._columns = res; });
+        this.originText = '';
     }
 
     onEditStart(event: any) {
@@ -80,13 +84,11 @@ export class TextAreaHtmlStringExampleComponent {
     }
 
     onEditingFocus(event: EditEventType) {
-        // TODO : DML 여부 판단.
-        const isDML = true;
+        const isDML = this.isDMLWord();
         if (isDML) {
             this.items = this._columns;
         }
         this.isFocusing = true;
-        console.log('onEditingFocus!', event);
     }
 
     onKeyChange(event: EditEventType) {
@@ -100,11 +102,25 @@ export class TextAreaHtmlStringExampleComponent {
     onWordSelect(event: string) {
         console.log('onWordSelect : ', event, ( this.textareaComponent as any ).elementRef);
         ( this.textareaComponent as any).addText(event);
+        this.originText += event;
         this.disableWordList();
     }
 
     private disableWordList() {
         this.items = null;
         this.isFocusing = false;
+    }
+
+    private isDMLWord(): boolean {
+        let returnValue = false;
+        const tempTxt = ( this.textareaComponent as any).getText().toUpperCase();
+        const dmlregexp = new RegExp('[' + this._dmls.join().replace(/,/g, '|') + ']+');
+        const result = tempTxt.match(dmlregexp).toString();
+        if (result.length > 0) {
+            returnValue = true;
+        } else {
+            returnValue = false;
+        }
+        return returnValue;
     }
 }
