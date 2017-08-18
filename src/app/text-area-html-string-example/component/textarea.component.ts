@@ -1,29 +1,29 @@
 
-import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterContentInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+// tslint:disable-next-line:max-line-length
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterContentInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { TextAreaService } from './textarea.service';
+import { EditEventType } from '../model/index';
 
 @Component({
     selector: 'app-text-area-component',
     template: `
-                <div class="btn-group">
-                    <div #textarea class="editor" 
-                        contenteditable="true" 
-                        (click)="onClick($event);"
-                        (focus)="onFocus($event);"
-                        (blur)="onblur($event);"
-                        (keyup)="onKeyup($event);"></div>
-                        
-                        <app-word-list-component 
-                            [items]="_items" 
-                            [boxPosition]="boxPosition" 
-                            [isFocusing]="isFocusing"></app-word-list-component>
-                </div>
+                <div #textarea class="editor" 
+                    contenteditable="true" 
+                    (click)="onClick($event);"
+                    (focus)="onFocus($event);"
+                    (blur)="onblur($event);"
+                    (keyup)="onKeyup($event);"></div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
+    providers: [TextAreaService],
     encapsulation: ViewEncapsulation.Native,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextAreaComponent implements AfterContentInit {
 
+    @Output() editingStart = new EventEmitter();
+    @Output() editingFocusOn = new EventEmitter();
+    @Output() editingEnd = new EventEmitter();
     @Output() keyChange = new EventEmitter();
     @Output() keyComplete = new EventEmitter();
 
@@ -32,19 +32,8 @@ export class TextAreaComponent implements AfterContentInit {
     htmlstring: string;
     columnTagCss = 'column';
     spacer = '&nbsp;';
-    isFocusing = false;
-    isSelectbox = '';
-    boxPosition = {
-        boxX: 0,
-        boxY: 0
-    };
 
-    _items: Array<any> = [
-        { id: '1', label: 'label1' },
-        { id: '2', label: 'label2' },
-        { id: '3', label: 'label3' },
-        { id: '4', label: 'label4' },
-    ];
+    private isEdit = false;
 
     constructor(private elementRef: ElementRef) {
         // test code
@@ -56,6 +45,10 @@ export class TextAreaComponent implements AfterContentInit {
             + `<span class="where">WHERE</span>${this.spacer}<span class="column">column1</span>${this.spacer}=${this.spacer}123`;
     }
 
+    addText(value: string) {
+        this.textareaEl.nativeElement.innerHTML += value + this.spacer;
+    }
+
     ngAfterContentInit() {
         console.log('ngAfterContentInit');
     }
@@ -65,45 +58,36 @@ export class TextAreaComponent implements AfterContentInit {
     }
 
     onClick(event: any) {
-        if (!this.textareaEl.nativeElement.innerHTML) {
-            this.isFocusing = true;
+        if (!this.textareaEl.nativeElement.innerHTML) { // first step : DML list display
+            this.editingStart.emit(event);
+        } else {
+            this.editingFocusOn.emit(new EditEventType(event, this.textareaEl.nativeElement.innerHTML));
         }
-        console.log('#filed', this.textareaEl);
-        console.log('onClick : ', event.clientX, event.clientY);
-
-        this.boxPosition = {
-            boxX: event.clientX,
-            boxY: event.clientY
-        };
-
+        // console.log('#filed', this.textareaEl, window.getSelection().getRangeAt(0));
+        // console.log('onClick : ', event.clientX, event.clientY);
     }
 
     onFocus(event: any) {
+        this.isEdit = true;
         const left: number = event.view.screenLeft;
         const top: number = event.view.screenTop;
-        console.log('onFocus : ', left, top, event);
+        // console.log('onFocus : ', left, top, event);
     }
 
     onblur(event: any) {
-        this.isFocusing = false;
-        console.log('onblur : ', event);
+        this.isEdit = false;
+        this.editingEnd.emit(new EditEventType(event, this.textareaEl.nativeElement.innerHTML));
+        // console.log('onblur : ', event);
     }
 
     onKeyup(event: any) {
-        if (this.textareaEl.nativeElement.innerHTML) {
-            this.isFocusing = false;
-        } else {
-            this.isFocusing = true;
-        }
-
         if (event.keyCode === 32) { // space
-            this.isFocusing = true;
-        } else {
-            this.isFocusing = false;
-        }
 
-        console.log('onKeyup : ', event);
-        console.log('el : ', this.textareaEl.nativeElement);
+        } else {
+            this.keyChange.emit(new EditEventType(event, this.textareaEl.nativeElement.innerHTML));
+        }
+        // console.log('onKeyup : ', event);
+        // console.log('el : ', this.textareaEl.nativeElement);
     }
 
 }
