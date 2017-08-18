@@ -12,6 +12,8 @@
     text-align: left;
     position: absolute;
     left: 20px;
+    font-size: 16px;
+    color: gray;
 }
 
 :host .editor .dml {
@@ -37,8 +39,28 @@
     border: 1px solid chocolate;
 }
 
-:host .word .word-list {
+:host .word-list {
     background-color: #fff;
+    border: 1px solid lightslategray;
+    box-shadow: 5px 5px 5px lightslategray;
+    text-align: left;
+}
+
+:host ul {
+    list-style: none;
+    list-style-type: none;
+    text-align: left;
+    padding: 0px;
+    margin: 0px auto;
+}
+
+:host li {
+    padding: 1px 5px 1px 5px;
+    margin: 2px auto;
+}
+
+:host li:hover {
+    background-color: lightgrey;
 }
 
 li {list-style-type: none;}

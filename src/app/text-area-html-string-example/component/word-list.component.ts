@@ -3,18 +3,17 @@ import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angu
 @Component({
     selector: 'app-word-list-component',
     template: `
-                <ul class="word-list"
-                     *ngIf="isFocusing"
-                     (keyup)="keyUp($event)"
-                     contenteditable="true" 
+                <div class="word-list"
                      [ngStyle]="setStyles()">
-
-                    <li *ngFor="let item of items">
-                        <a class="dropdown-item" (click)="select(item);">
-                            <span>{{item.label}}</span>
-                        </a>
-                    </li>
-                </ul>
+                    <ul class="list-none"
+                        *ngIf="isFocusing">
+                        <li *ngFor="let item of items">
+                            <a class="dropdown-item" (click)="select(item);">
+                                <span>{{item}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
               `,
     styleUrls: ['../text-area-html-string-example.css'],
     encapsulation: ViewEncapsulation.Native
@@ -34,6 +33,7 @@ export class WordListComponent {
     @Input()
     set word(value: string) {
         this._word = value;
+        console.log('word-list ==> ', this._word);
     }
 
     get word(): string {
@@ -52,18 +52,13 @@ export class WordListComponent {
         this.htmlstring = 'This select box!';
     }
 
-    ngOnChanges() {
-        console.log('ngOnChanges', this.isFocusing);
-    }
-
     select(word: any) {
         this.wordSelect.emit(word);
     }
 
     setStyles() {
         console.log(this.boxPosition);
-        let styles = {
-            // CSS property names
+        const styles = {
             'left': this.boxPosition.boxX + 'px',
             'top': this.boxPosition.boxY + 'px',
             'position': 'absolute'
