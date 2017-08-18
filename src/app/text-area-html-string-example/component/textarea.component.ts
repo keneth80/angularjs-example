@@ -8,7 +8,7 @@ import { EditEventType } from '../model/index';
     selector: 'app-text-area-component',
     template: `
                 <div #textarea class="editor" 
-                    contenteditable="true" 
+                    contenteditable="true"
                     (click)="onClick($event);"
                     (focus)="onFocus($event);"
                     (blur)="onblur($event);"
@@ -57,10 +57,6 @@ export class TextAreaComponent implements AfterContentInit {
         console.log('ngAfterContentInit');
     }
 
-    setDMLWord(text: string): string {
-        return `<span class="dml">${text}</span>`;
-    }
-
     onClick(event: any) {
         if (!this.textareaEl.nativeElement.innerHTML) { // first step : DML list display
             this.editingStart.emit(event);
@@ -90,8 +86,7 @@ export class TextAreaComponent implements AfterContentInit {
         } else {
             this.keyChange.emit(new EditEventType(event, this.textareaEl.nativeElement.innerHTML));
         }
-        // console.log('onKeyup : ', event);
+        console.log('onKeyup : ', event);
         // console.log('el : ', this.textareaEl.nativeElement);
     }
-
 }

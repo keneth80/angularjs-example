@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angu
                      [ngStyle]="setStyles()">
                     <ul class="list-none"
                         *ngIf="isFocusing">
-                        <li *ngFor="let item of items">
+                        <li *ngFor="let item of items | filter:word">
                             <a class="dropdown-item" (click)="select(item);">
                                 <span>{{item}}</span>
                             </a>
@@ -45,7 +45,7 @@ export class WordListComponent {
     htmlstring: string;
     columnTagCss = 'column';
 
-    private _word: string;
+    private _word: string = '';
     private _items: Array<any>;
 
     constructor() {

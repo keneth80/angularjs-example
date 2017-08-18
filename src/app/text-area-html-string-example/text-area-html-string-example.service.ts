@@ -23,26 +23,30 @@ export class TextAreaHtmlStringExampleService {
             });
     }
 
-    getPosition(el: any) {
-        let xPosition = 0;
-        let yPosition = 0;
-
-        while (el) {
-            if (el.tagName === 'BODY') {
-                const xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
-                const yScrollPos = el.scrollTop || document.documentElement.scrollTop;
-                xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
-                yPosition += (el.offsetTop - yScrollPos + el.clientTop);
-            } else {
-                xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-                yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
-            }
-            el = el.offsetParent;
-        }
-        return {
-            x: xPosition,
-            y: yPosition
-        };
+    getPosition(element: any) {
+        return getCaretPosition(element);
     }
-
 }
+
+// tslint:disable-next-line:typeof-compare
+var ie = (typeof (document as any).selection !== 'undefined' && (document as any).selection.type !== 'Control') && true;
+var w3 = (typeof window.getSelection !== 'undefined') && true;
+
+export function getCaretPosition(element) {
+    var caretOffset = 0;
+    if (w3) {
+        var range = window.getSelection().getRangeAt(0);
+        var preCaretRange = range.cloneRange();
+        preCaretRange.selectNodeContents(element);
+        preCaretRange.setEnd(range.endContainer, range.endOffset);
+        caretOffset = preCaretRange.toString().length;
+    } else if (ie) {
+        var textRange = (document as any).selection.createRange();
+        var preCaretTextRange = (document as any).body.createTextRange();
+        preCaretTextRange.moveToElementText(element);
+        preCaretTextRange.setEndPoint('EndToEnd', textRange);
+        caretOffset = preCaretTextRange.text.length;
+    }
+    return caretOffset;
+}
+

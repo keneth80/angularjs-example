@@ -5,6 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextAreaHtmlStringExampleComponent } from '../text-area-html-string-example/text-area-html-string-example.component';
 import { TextAreaComponent } from './component/textarea.component';
 import { WordListComponent } from './component/word-list.component';
+import { WordComponent } from './component/word.component';
+
+import { EditFilterPipe } from './utils/edit-filter.pipe';
 
 @NgModule({
   imports: [
@@ -15,7 +18,9 @@ import { WordListComponent } from './component/word-list.component';
   declarations: [
     TextAreaHtmlStringExampleComponent,
     TextAreaComponent,
-    WordListComponent
+    WordListComponent,
+    WordComponent,
+    EditFilterPipe
   ],
   providers: [ ],
   exports: [
