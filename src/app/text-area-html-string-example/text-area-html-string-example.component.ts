@@ -21,6 +21,7 @@ import { EditEventType } from './model/index';
                                              (keyComplete)="onKeyComplete($event)">
                     </app-text-area-component>
                     <app-word-list-component [items]="items" 
+                                             [word]="_currentText"
                                              [boxPosition]="boxPosition" 
                                              [isFocusing]="isFocusing"
                                              (wordSelect)="onWordSelect($event)"></app-word-list-component>
@@ -57,9 +58,10 @@ export class TextAreaHtmlStringExampleComponent {
 
     _dmls: string[];
     _columns: string[];
+    _currentText: string; // focus start 후 입력되는 text
 
     private originText: string; // 순수 sql string
-    private currentText: string; // focus start 후 입력되는 text
+    
 
     constructor(private textareaService: TextAreaHtmlStringExampleService) {
         this.textareaService.getDML().subscribe((res: any) => { this._dmls = res; });
@@ -75,6 +77,7 @@ export class TextAreaHtmlStringExampleComponent {
             boxX: 20,
             boxY: 210
         };
+        this._currentText = '';
     }
 
     onEditEnd(event: any) {
@@ -88,11 +91,24 @@ export class TextAreaHtmlStringExampleComponent {
         if (isDML) {
             this.items = this._columns;
         }
+        this.boxPosition = {
+            boxX: 20,
+            boxY: 210
+        };
         this.isFocusing = true;
+        this._currentText = '';
+        // console.log('window.getSelection().anchorOffset : ', window.getSelection().getRangeAt(0).cloneRange());
+        // const el: any = ( this.textareaComponent as any ).textareaEl.nativeElement;
+        // console.log('onEditingFocus : ', ( this.textareaComponent as any ).textareaEl.nativeElement);
+        // console.log('position : ', el, this.textareaService.getPosition(el));
     }
 
     onKeyChange(event: EditEventType) {
         console.log('onKeyChange : ', event.data);
+        if (event.event.key.length === 1) {
+            this._currentText += event.event.key;
+        }
+        console.log('_currentText : ', this._currentText);
     }
 
     onKeyComplete(event: any) {
